@@ -1,0 +1,13 @@
+/* src/styles/home.css */
+
+/* Popular Categories */
+.popular-categories {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.popular-categories h1 {
+    font-family: 'Quicksand', serif;
+    font-size: 2rem;
+    color: #93B795;
+}
