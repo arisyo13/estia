@@ -1,29 +1,11 @@
-import { useEffect, useState } from 'react';
-import { fetchBusinesses } from '../api/businesses'; // Adjust the path to match your folder structure
-
-const Businesses = () => {
-  const [businesses, setBusinesses] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const getBusinesses = async () => {
-      const data = await fetchBusinesses();
-      setBusinesses(data);
-      setLoading(false);
-    };
-    getBusinesses();
-  }, []);
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+const Businesses = ({ businesses }) => {
 
   return (
     <div>
       <h2>Businesses</h2>
       <ul>
-        {businesses.map((business) => (
-          <li key={business.id}>{business.name}</li>
+        {businesses && businesses.map((business, index) => (
+          <li key={business.id + business.name}>{business.name}</li>
         ))}
       </ul>
     </div>

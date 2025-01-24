@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import styles from './Slideshow.module.css';
 import { LeftButton } from '../LeftButton';
 import { RightButton } from '../RightButton';
@@ -17,39 +17,8 @@ import img12 from '../../assets/cafe_spots/12.jpeg';
 const localImages = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12];
 
 // eslint-disable-next-line react/prop-types
-function Slideshow ({ onCardClick, currentIndex, setCurrentIndex }) {
-  const [slides, setSlides] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const addressesResponse = await fetch(
-          'https://estiaproject-b3ef95234cdd.herokuapp.com/api/v1/address/'
-        );
-        const addresses = await addressesResponse.json();
-
-        const businessesResponse = await fetch(
-          'https://estiaproject-b3ef95234cdd.herokuapp.com/api/v1/business/'
-        );
-        const businesses = await businessesResponse.json();
-
-        const combinedData = businesses.map((business, index) => {
-          const address = addresses.find((addr) => addr.id === business.id_address);
-          return {
-            ...business,
-            ...address,
-            imageUrl: localImages[index] || '',
-          };
-        });
-
-        setSlides(combinedData);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
-
-    fetchData();
-  }, []);
+function Slideshow ({ onCardClick, currentIndex, setCurrentIndex, combinedData }) {
+  const slides = useMemo(() => combinedData && combinedData.map((item, index) => ({ ...item, imageUrl: localImages[index] || '' })), [combinedData])
 
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length);

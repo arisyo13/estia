@@ -3,8 +3,8 @@ function Card({ businesses }) {
   return (
     <div>
       {businesses && businesses.length ? (
-        businesses.map((business) => (
-          <div key={business.id}>
+        businesses.map((business, index) => (
+          <div key={business.id + business.name}>
             <h3>{business.name}</h3>
             <p>{business.description}</p>
           </div>

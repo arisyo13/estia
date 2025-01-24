@@ -1,4 +1,5 @@
 import React from "react";
+// import '../styles/modal.css';
 
 function FilterModal({ onClose, onApply }) {
   const handleMouseOver = (index) => {
