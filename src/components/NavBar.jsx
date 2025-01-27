@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import estia from '../assets/estia.png'
 
 function NavBar() {
+  // ourely for documentation
   return (
     <nav style={{ width: '100%', position: 'relative', display: 'flex', alignItems: 'center', fontSize: 24, height: 90 }}>
       <Link style={{ position: 'absolute', top: 0, left: 0 }} to="/">
