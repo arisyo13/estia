@@ -18,7 +18,7 @@ function NavBar() {
         }}
       >
         <li><Link to="/">Home</Link></li>
-        <li><Link to="/details">Details</Link></li>
+        <li><Link to="/new">Details</Link></li>
       </ul>
     </nav>
   );
