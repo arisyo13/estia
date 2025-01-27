@@ -62,7 +62,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Layout />}>
           <Route index element={<Home businessData={combinedData} />} />
-          <Route path="details" element={<Details combinedData={combinedData} />} />
+          <Route path="new" element={<Details combinedData={combinedData} />} />
         </Route>
       </Routes>
     </BrowserRouter>
